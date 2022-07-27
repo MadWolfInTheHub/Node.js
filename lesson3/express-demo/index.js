@@ -2,7 +2,7 @@ const Joi = require ('joi');
 
 const { response } = require('express');
 const express = require('express');
-const app =express();
+const app = express();
 
 app.use(express.json());
 
@@ -53,14 +53,13 @@ app.put('/api/courses/:id', (req, res) => {
   // Validate
   // If invalid, return 400
 
-  const result = validateCourse(req.body);
   const { error } = validateCourse(req.body); //result.error
 
   // 400 Bad request
   if(error) return res.status(400).send(error.details[0].message);
 
   // Update course
-  courses.name = req.body.name;
+  course.name = req.body.name;
   // Return the updated course
   res.send(course);
 
