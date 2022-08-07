@@ -27,7 +27,7 @@ const validation = (genre) => {
 }
 
 // GET request (all genres)
-
+ 
 router.get('/', (req, res) => {
   res.send(genres);
 });

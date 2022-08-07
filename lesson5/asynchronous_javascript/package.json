@@ -1,5 +1,5 @@
 {
-  "name": "node.js-project_genres-api",
+  "name": "asynchronous_javascript",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
@@ -9,9 +9,6 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "express": "^4.18.1",
-    "joi": "^17.6.0",
-    "mongodb": "^4.8.1",
-    "nodemon": "^2.0.19"
+    "mongodb": "^4.8.1"
   }
 }
