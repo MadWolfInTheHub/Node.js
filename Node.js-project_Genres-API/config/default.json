@@ -1,5 +1,5 @@
 {
   "jwtPrivateKey": "",
-  "db": "MONGODB_URI"
+  "db": "mongodb://localhost/vidly"
 }
 
