@@ -18,9 +18,9 @@ const Genre = mongoose.model('Genre', genreSchema);
 // Validation
 
 const validateGenre = (genre) => {
-  const name = { name: genre };
+  console.log(genre)
   const schema = Joi.object({ name: Joi.string().min(3).required() });
-  return schema.validate(name);
+  return schema.validate(genre);
 }
 
 exports.Genre = Genre;
