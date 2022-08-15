@@ -15,7 +15,7 @@ const customers = require('./routes/customers');
 const movies = require('./routes/movies');
 const rentals = require('./routes/rentals');
 const users = require('./routes/users');
-const auth = require('./routes/auth');  
+const auth = require('./routes/auth');
 
 // process.on('uncaughtException', (ex) => {
 //   console.log('Uncaught exception');
@@ -44,7 +44,7 @@ if(!config.get('jwtPrivateKey')) {
   process.exit(1);
 }
 
-mongoose.connect('mongodb://localhost/vidly')
+mongoose.connect('mongodb+srv://admin:admin@cluster0.5qbm9ur.mongodb.net/')
   .then(() => console.log('Connected to MongoDB...'))
   .catch(err => console.error('Could not connect to MongoDB...'));
 
