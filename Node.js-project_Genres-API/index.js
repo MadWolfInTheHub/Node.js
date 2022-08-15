@@ -1,10 +1,7 @@
 // Libraries
-const express = require('express');
-const app = express();
 const winston = require('winston');
 require('winston-mongodb');
 require('express-async-errors');
-require('./startup/prod')(app);
 const error = require('./middleware/error');
 const config = require('config');
 const Joi = require('joi');
@@ -16,30 +13,22 @@ const movies = require('./routes/movies');
 const rentals = require('./routes/rentals');
 const users = require('./routes/users');
 const auth = require('./routes/auth');  
+const express = require('express');
+const app = express();
 
-// process.on('uncaughtException', (ex) => {
-//   console.log('Uncaught exception');
-//   winston.error(ex.message, ex)
-// })
+process.on('uncaughtException', (ex) => {
+  console.log('Uncaught exception');
+  winston.error(ex.message, ex)
+})
 
 
-// winston.add(winston.transports.File, { filename: 'logfile.log' });
-// winston.add(winston.transports.MongoDB, { 
-//   db: "mongodb://localhost/vidly",
-//     // collection: "log",
-//     level: "error",
-//     storeHost: true,
-//     capped: true,
-//     // metaKey: 'meta'
-  
-// });
-
-// const p = Promise.reject(new Error('Smt failed miserably'));
-
-// process.then(() => console.log('Done')) 
+winston.add(winston.transports.File, { filename: 'logfile.log' });
+winston.add(winston.transports.MongoDB, { 
+  db: "mongodb://localhost/vidly",
+  level: "info",
+});
 
 if(!config.get('jwtPrivateKey')) {
-  // % export vidly_jwtPrivateKey=mySecureKey     Use it in terminal
   console.error('FATAL ERROR: jwtPrivateKey is not defined');
   process.exit(1);
 }
@@ -65,10 +54,5 @@ app.listen(3000, () => console.log('Listening on port 3000...')) */
 // PORT using Nodemon to watch for changes
 const port = process.env.PORT || 3000;
 app.listen(port, () => console.log(`Listening on port ${port}...`));
-
-// mongodb+srv://<username>:<password>@cluster0.wgwmrze.mongodb.net/
-
-// "mongodb://localhost/vidly"
-// mongodb+srv://<username>:<password>@cluster0.wgwmrze.mongodb.net/
 
 // install nodemon and run the app using "npx nodemon" command
