@@ -63,7 +63,7 @@ app.use(error);
 app.listen(3000, () => console.log('Listening on port 3000...')) */
 
 // PORT using Nodemon to watch for changes
-const port = process.env.MONGODB_URI || 3000;
+const port = process.env.PORT || 3000;
 app.listen(port, () => console.log(`Listening on port ${port}...`));
 
 // "mongodb+srv://admin:admin@cluster0.5qbm9ur.mongodb.net/?retryWrites=true&w=majority"
