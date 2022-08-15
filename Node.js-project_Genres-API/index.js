@@ -15,7 +15,7 @@ const customers = require('./routes/customers');
 const movies = require('./routes/movies');
 const rentals = require('./routes/rentals');
 const users = require('./routes/users');
-const auth = require('./routes/auth');
+const auth = require('./routes/auth');  
 
 // process.on('uncaughtException', (ex) => {
 //   console.log('Uncaught exception');
@@ -44,7 +44,7 @@ if(!config.get('jwtPrivateKey')) {
   process.exit(1);
 }
 
-mongoose.connect('mongodb+srv://admin:admin@cluster0.5qbm9ur.mongodb.net/')
+mongoose.connect('mongodb://localhost/vidly')
   .then(() => console.log('Connected to MongoDB...'))
   .catch(err => console.error('Could not connect to MongoDB...'));
 
@@ -63,9 +63,12 @@ app.use(error);
 app.listen(3000, () => console.log('Listening on port 3000...')) */
 
 // PORT using Nodemon to watch for changes
-const port = process.env.MONGODB_URI || 3000;
+const port = process.env.PORT || 3000;
 app.listen(port, () => console.log(`Listening on port ${port}...`));
 
-// "mongodb+srv://admin:admin@cluster0.5qbm9ur.mongodb.net/?retryWrites=true&w=majority"
+// mongodb+srv://<username>:<password>@cluster0.wgwmrze.mongodb.net/
+
+// "mongodb://localhost/vidly"
+// mongodb+srv://<username>:<password>@cluster0.wgwmrze.mongodb.net/
 
 // install nodemon and run the app using "npx nodemon" command
