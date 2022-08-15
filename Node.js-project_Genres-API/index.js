@@ -44,7 +44,7 @@ if(!config.get('jwtPrivateKey')) {
   process.exit(1);
 }
 
-mongoose.connect('mongodb://localhost/vidly')
+mongoose.connect('mongodb+srv://admin:admin@cluster0.5qbm9ur.mongodb.net')
   .then(() => console.log('Connected to MongoDB...'))
   .catch(err => console.error('Could not connect to MongoDB...'));
 
@@ -65,5 +65,17 @@ app.listen(3000, () => console.log('Listening on port 3000...')) */
 // PORT using Nodemon to watch for changes
 const port = process.env.PORT || 3000;
 app.listen(port, () => console.log(`Listening on port ${port}...`));
+
+
+// const { MongoClient, ServerApiVersion } = require('mongodb');
+// const uri = "mongodb+srv://admin:admin@cluster0.5qbm9ur.mongodb.net";
+// MongoClient.connect(uri);
+// const client = new MongoClient(uri, { useNewUrlParser: true, useUnifiedTopology: true, serverApi: ServerApiVersion.v1 });
+// client.connect(err => {
+//   const collection = client.db("test").collection("devices");
+//   // perform actions on the collection object
+//   client.close();
+// });
+
 
 // install nodemon and run the app using "npx nodemon" command
