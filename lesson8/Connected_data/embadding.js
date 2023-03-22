@@ -59,9 +59,10 @@ async function removeAuthor(courseId, authorId) {
   course.save();
 }
 
-removeAuthor('62f33715b629101ec758df96', '62f337d416995376d08c8fc7');
+removeAuthor('6409b89ea58ae4d410d2481a', '6409b89ea58ae4d410d24819');
 
-// addAuthor('62f33715b629101ec758df96', new Author({ name: "Amy"}));
+// addAuthor('6409b89ea58ae4d410d2481a', new Author({ name: "Amy"}));
+// createCourse('Node JS')
 
 // createCourse('Node Course', [
 //   new Author({ name: 'Serhii' }),

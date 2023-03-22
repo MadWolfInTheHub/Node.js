@@ -1,14 +1,16 @@
-// const x=;
-// function sayHello(name) {
-//   console.log(`Hello ${name}`)
-// }
+
+function sayHello(name) {
+  console.log(`Hello ${name}`)
+}
+
+// sayHello('Serhii')
 
 // // sayHello("Serhii")
 // console.log(window)
 
 
 // Lesson 2
-// console.log(module);
+console.log(module);
 
 // const logger = require('./logger')
 // console.log(logger)
@@ -40,14 +42,14 @@
 
 // Produce something
 
-const EventEmitter = require('events');
-const { emit } = require('process');
+// const EventEmitter = require('events');
+// const { emit } = require('process');
 
-const emitter = new EventEmitter();
-emitter.on('messageLogged', (arg) => {
-  console.log('Listener called', arg);
-});
+// const emitter = new EventEmitter();
+// emitter.on('messageLogged', (arg) => {
+//   console.log('Listener called', arg);
+// });
 
-emitter.emit('messageLogged', {id: 1, url: 'http://'});
+// emitter.emit('messageLogged', {id: 1, url: 'http://'});
 
 // Raise an event: logging (data: message)

@@ -1,4 +1,6 @@
+const debug = require('debug')('app:startup');
 const config = require('config');
+// const dbDebugger = require('debug')('app:db');
 
 const express = require('express');
 const Joi = require('joi');
@@ -7,30 +9,28 @@ const morgan = require('morgan');
 const logger = require('./logger');
 const app = express();
 
-process.env.NODE_ENV // undefined
-console.log(`NODE_ENV: ${process.env.NODE_ENV}`);
-console.log(`app: ${app.get('env')}`);
-app.get('env')
-
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(express.static('public'));
 app.use(helmet());
 
-// Configuration 
-console.log(`Application name: ${config.get('name')}`);
-console.log(`Mail server name: ${config.get('mail.host')}`);
-console.log(`Mail password: ${config.get('mail.password')}`);
+// Configuration
+
+console.log(`Application Name: ${config.get('name')}`);
+console.log(`Mail Server Name: ${config.get('mail.host')}`);
+console.log(`Mail Password: ${config.get('mail.password')}`);
 
 if(app.get('env') === 'development') {
   app.use(morgan('tiny'));
-  console.log('Morgan enabled')
+  debug('Morgan enabled...')
 }
 
 app.use(logger);
+// console.log(`Node_ENV: ${process.env.NODE_ENV}`) // undefined
+// console.log(`app: ${app.get('env')}`);
 
 const validation = (course) => {
-  const name = {name: genre};
+  const name = {name: course};
   const schema = Joi.object({ name: Joi.string().min(3).required()});
   return schema.validate(name);
 }
@@ -67,7 +67,7 @@ app.post('/api/courses', (req, res) => {
   }
 
   courses.push(course);
-  request.send(courses);
+  res.send(course);
 });
 
 // PUT request
@@ -99,4 +99,4 @@ app.delete('/api/courses/:id', (req, res) => {
 
 const port = process.env.port || 3000;
 
-app.listen(port, () => `Listening on ${port}`);
+app.listen(port, () => console.log(`Listening on port ${port}`));

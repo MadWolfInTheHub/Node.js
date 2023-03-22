@@ -11,50 +11,44 @@
 //   }
 // });
 
-// 
-
-async function sendEmail() {
-
+async function displayCustomer() {
   const customer = await getCustomer(1);
   console.log('Customer: ', customer);
-
-  if(customer.isGold) {
-    const movies = await getTopMovies(customer);
-    console.log('Top movies: ', movies);
-  
-    const email = await sendEmail(customer.email, movies);
+  if (customer.isGold) {
+    const topMovies = await getTopMovies(customer);
+    console.log('Top movies: ', topMovies);
+    await sendEmail(customer.email, topMovies);
     console.log('Email sent...')
   }
-
-};
-
-sendEmail();
+}
 
 function getCustomer(id) {
-  return new Promise((resolve, reject) => {
+  return new Promise(resolve => {
     setTimeout(() => {
-      resolve({ 
+      resolve ({ 
         id: 1, 
         name: 'Mosh Hamedani', 
         isGold: true, 
         email: 'email' 
       });
-    }, 4000);  
+    }, 4000); 
   });
 };
 
 function getTopMovies() {
-  return new Promise((resolve, reject) => {
+  return new Promise(resolve => {
     setTimeout(() => {
-      resolve(['movie1', 'movie2']);
+      resolve(['movie1', 'movie2'])
     }, 4000);
   });
 };
 
 function sendEmail(email, movies) {
-  return new Promise((resolve, reject) => {
+  return new Promise(resolve => {
     setTimeout(() => {
       resolve();
     }, 4000);
   });
 };
+
+displayCustomer();
