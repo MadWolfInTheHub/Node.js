@@ -38,35 +38,12 @@ router.post('/', async function (req, res) {
     },
   })
 
-  // try {
-  //   new Fawn.Task()
-  //     .save('rentals', rental)
-  //     .update(
-  //       'movies', 
-  //       { _id: movie._id }, 
-  //       { $inc: { numberInStock: -1 } })
-  //     .run();
-  // } catch (ex) {
-    //   res.status(500).send('Smt failed...');
-    // }
-    rental = await rental.save();
-    
-    movie.numberInStock--;
-    movie.save();
-    
-      res.send(rental)
+  rental = await rental.save();
+  
+  movie.numberInStock--;
+  movie.save();
+  
+    res.send(rental)
 });
-
-// router.post('/', async function (req, res) {
-  
-// });
-
-// router.put('/:id', async function (req, res) {
-  
-// });
-
-// router.delete('/:id', async function (req, res) {
-  
-// });
 
 module.exports = router
